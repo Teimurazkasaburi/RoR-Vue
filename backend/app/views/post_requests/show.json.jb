@@ -1,0 +1,35 @@
+a = url_for(@post_request.user.avatar.variant(combine_options: User.avatar)) if @post_request.user.avatar.attached?
+
+c = if @current_user
+      if @post_request.user == @current_user || @current_user.admin 
+          true
+        else
+          false
+      end
+    else
+      false
+    end
+
+json = {
+  title: "Looking for #{@post_request.type_of_property} to #{@post_request.purpose}",
+  location: "In #{@post_request.area if @post_request.area}, #{@post_request.lga}, #{@post_request.state} ",
+  budget: @post_request.budget,
+  bedrooms: @post_request.bedrooms,
+  purpose: @post_request.purpose,
+  type_of_property: @post_request.type_of_property,
+  created_at: @post_request.created_at.strftime( "%e %b. %y"),
+  state: @post_request.state,
+  lga: @post_request.lga,
+  description: @post_request.description,
+  permalink:"p/requests/#{@post_request.id}",
+  can_delete: c,
+}
+
+json[:buyer] = {
+  name: "#{@post_request.user.f_name} #{@post_request.user.l_name}" ,
+  phone: @post_request.user.phone,
+  url: "/#{@post_request.user.username}",
+  avatar: a
+}
+
+json

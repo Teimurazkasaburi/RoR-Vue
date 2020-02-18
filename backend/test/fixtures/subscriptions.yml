@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plan: MyString
+  amount: 1
+  expiring_date: 2019-06-05 22:15:45
+  start_date: 2019-06-05 22:15:45
+  boost: 1
+  priorities: 1
+
+two:
+  plan: MyString
+  amount: 1
+  expiring_date: 2019-06-05 22:15:45
+  start_date: 2019-06-05 22:15:45
+  boost: 1
+  priorities: 1

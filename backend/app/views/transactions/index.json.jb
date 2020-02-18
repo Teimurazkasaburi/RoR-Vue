@@ -1,0 +1,10 @@
+@transactions.map do | transaction |
+  {
+    email: transaction.user.email,
+    amount: transaction.amount,
+    f_name: transaction.user.f_name,
+    l_name: transaction.user.l_name,
+    ref_no: transaction.ref_no,
+    status: transaction.status
+  }
+end

@@ -1,0 +1,21 @@
+a = @verify_users.map do |request|
+
+  {
+    name: "#{request.user.f_name} #{request.user.l_name}",
+    email: request.user.email,
+    permalink: "/verify_users/#{request.id}",
+    phone:  request.user.phone,
+    created_at: request.created_at.strftime("%e %b. %y. - %l:%M %P")
+  }
+end
+
+{
+  links: {
+    current_page:  @verify_users.current_page,
+    per_page: @verify_users.per_page,
+    total_entries: @verify_users.total_entries,
+    next_page: "/?page=#{@verify_users.next_page}",
+    previous_page: "/?page=#{@verify_users.previous_page}",
+  },
+  requests: a
+}

@@ -1,0 +1,59 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  post: one
+  site: MyString
+  title: MyString
+  description: MyString
+  keywords: MyString
+  charset: MyString
+  prefix: MyString
+  separator: MyString
+  suffix: MyString
+  reverse: false
+  noindex: false
+  nofollow: false
+  noarchive: false
+  canonical: MyString
+  prev: MyString
+  next: MyString
+  image_src: MyString
+  og_title: MyString
+  og_type: MyString
+  og_url: MyString
+  og_image: MyString
+  og_video_director: MyString
+  og_video_writer: MyString
+  og_video_writer: MyString
+  twitter_card: MyString
+  twitter_site: MyString
+  twitter_creator: MyString
+
+two:
+  post: two
+  site: MyString
+  title: MyString
+  description: MyString
+  keywords: MyString
+  charset: MyString
+  prefix: MyString
+  separator: MyString
+  suffix: MyString
+  reverse: false
+  noindex: false
+  nofollow: false
+  noarchive: false
+  canonical: MyString
+  prev: MyString
+  next: MyString
+  image_src: MyString
+  og_title: MyString
+  og_type: MyString
+  og_url: MyString
+  og_image: MyString
+  og_video_director: MyString
+  og_video_writer: MyString
+  og_video_writer: MyString
+  twitter_card: MyString
+  twitter_site: MyString
+  twitter_creator: MyString

@@ -1,0 +1,7 @@
+json = {
+  free: @free,
+  basic: @basic,
+  classic: @classic,
+  custom: @custom,
+  pro: @pro
+}

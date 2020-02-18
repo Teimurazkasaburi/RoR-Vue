@@ -1,0 +1,30 @@
+p = @bookmarks.map do |m|
+    i = if m.post.images.attached? == true
+          url_for(m.post.images.first.variant(combine_options: Post.medium_options))
+        else
+          nil
+        end
+      {
+        price: m.post.price,
+        boost: m.post.boost,
+        priority: m.post.priority,
+        title: m.post.title,
+        location: "#{m.post.lga}, #{m.post.state}",
+        permalink: m.post.permalink,
+        card_thumbnail: i,
+        unsave_url: "posts/#{m.post.permalink}/markers/#{m.id}"
+      }
+    end
+
+
+
+  {
+    links: {
+      current_page:  @bookmarks.current_page,
+      per_page: @bookmarks.per_page,
+      total_entries: @bookmarks.total_entries,
+      next_page: "/?page=#{@bookmarks.next_page}",
+      previous_page: "/?page=#{@bookmarks.previous_page}",
+    },
+    posts: p
+  }

@@ -1,0 +1,68 @@
+s = if @user && @post.markers.where(user_id: @user.id, post_id: @post.id).exists?
+      true
+    else
+      false
+    end
+l = if s
+      "posts/#{@post.permalink}/markers/#{@post.markers.where(user_id: @user.id).first.id}"
+    end
+
+json = {
+  id: @post.id,
+  price: @post.price,
+  boost: @post.boost,
+  priority: @post.priority,
+  duration: @post.duration,
+  street: @post.street,
+  lga: @post.lga,
+  state: @post.state,
+  title: @post.title,
+  purpose: @post.purpose,
+  use_of_property: @post.use_of_property,
+  square_meters: @post.square_meters,
+  type_of_property: @post.type_of_property,
+  bedrooms: @post.bedrooms,
+  bathrooms: @post.bathrooms,
+  toliets: @post.toliets,
+  description: @post.description,
+  video_link: @post.video_link,
+  location: "#{@post.street} #{@post.lga} #{@post.state}, Nigeria",
+  permalink: @post.permalink,
+  area: @post.area,
+  reference: @post.reference_id,
+  created_at: @post.created_at.strftime( "%e %b. %y"),
+  updated_at: @post.updated_at.strftime( "%e %b. %y"),
+  save_url: "posts/#{@post.permalink}/markers",
+  unsave_url: l,
+  unpublished: @post.unpublish,
+  saved: s,
+  views: @post.view_count
+}
+
+if @post.user.avatar.attached?
+  json[:agent_avatar] = url_for(@post.user.avatar.variant(combine_options: User.avatar))
+end
+
+if @post.user.address
+  json[:agent] = {
+    name: @post.user.f_name,
+    phone: @post.user.phone,
+    country_code: @post.user.country_code,
+    whatsapp: @post.user.whatsapp,
+    country_code_whatsapp: @post.user.country_code_whatsapp,
+    company: @post.user.company,
+    account_type: @post.user.account_type,
+    url: "/#{@post.user.username}",
+    address: "#{@post.user.address["street"]}, #{@post.user.address["city"]}, #{@post.user.address["state"]}.",
+    verified: @post.user.verified
+  }
+end
+
+json[:images] = @post.images.reject { |i| i.variable? == false } .map do |image|
+  {
+    large_url: post_image_url(@post, image), # url_for(image.variant(combine_options: Post.large_options))
+    delete_url: delete_image_attachment_post_path(image.id)
+  }
+end
+
+json

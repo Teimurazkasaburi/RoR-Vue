@@ -1,0 +1,7 @@
+{
+  plan: @user.subscription.plan,
+  total_boost: @user.boost_count,
+  total_priority: @user.priority_count,
+  total_post: @user.posts_count,
+  total_post_request: @user.post_requests_count
+}

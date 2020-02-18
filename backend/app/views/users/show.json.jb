@@ -1,0 +1,21 @@
+json = {
+  f_name: @user.f_name,
+  l_name: @user.l_name,
+  phone:  @user.phone,
+  username: @user.username,
+  email: @user.email,
+  country_code: @user.country_code,
+  whatsapp: @user.whatsapp,
+  country_code_whatsapp: @user.country_code_whatsapp,
+  account_type: @user.account_type,
+  address: @user.address,
+  company: @user.company,
+  about: @user.about,
+  verified: @user.verified
+}
+
+if @user.avatar.attached?
+  json[:avatar] = url_for(@user.avatar.variant(combine_options: User.avatar))
+end
+
+json

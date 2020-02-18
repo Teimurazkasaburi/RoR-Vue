@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+  <body style="font-family: Arial;">
+    <div class="dot-body" style="max-width: 600px;margin: auto;background-color: #f8f8f8">
+      <div class="dot-head" style="width: 600px;height: 150px;background-image: linear-gradient(113deg, #28f29c, #0cb8e0); background-color:#3E3E3E;">
+        <div>
+          <img src="https://2dots.ams3.digitaloceanspaces.com/2dot-mail-logo.png" class="logo-img" style="padding-top: 10px;margin: 36px 35%;"/>
+    </div>
+      </div>
+      <div class="con-sec" align="center" style="margin-top: -30px">
+        <div class="dot-sec" style="width: 526px;height: 480px;background-color: white;box-shadow: 0 1px 9px #d2cdcd">
+          <div align="center">
+             <img  style="margin-top: 20px;"src="https://2dots.ams3.digitaloceanspaces.com/Yes.png" height=30 width=30>
+            <p style="color:#0CB8E0; text-transform: uppercase" >HELLO <%=@user.f_name%>, BANNER AD YOUR SUBSCRIPTION WAS SUCCESSFUL!</p>
+            <div class="divider" style="padding-left: 35px;padding-right: 35px"> <hr style="border: 0.4px solid #d4d0d0;">
+            </div>
+   
+  <div align= "left" style="padding-left: 50px; font-size: 9px; color: #3E3E3E">
+     <p style="color:#A6ADB4"> AMOUNT BILLED </p>
+     <p style="font-size: 20px;"> N <%=@banner.amount%> </p>
+     <p style="color:#A6ADB4">EXPIRATION DATE </p>
+    <p> <%=@banner.expiring_date.strftime("%e %b. %y")%> </p>
+    <p style="color:#A6ADB4">PLAN</p>
+    <p> <%=@banner.banner_type%> </p>
+    <p style="color:#A6ADB4">PAYMENT METHOD</p>
+    <p>Paystack</p>
+    <p style="color:#A6ADB4">REFERENCE NO.</p>
+    <p> <%=@banner.ref_no%> </p>
+   </div>
+            <div class="divider" style="margin-top: 20px;padding-left: 35px;padding-right: 35px"> <hr style="border: 0.4px solid #d4d0d0;">
+            </div>
+        <p align= "left" style= "font-size: 12px; color: #3E3E3E; padding-left: 50px;">Thanks</p>
+    <p align= "left" style= "font-size: 12px; color: #3E3E3E; padding-left: 50px;">2Dot Properties Team</p>      
+            <div class="divider" style="margin-top: 60px;padding-left: 35px;padding-right: 35px"> <hr style="border: 0.4px solid #d4d0d0;">
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="dot-foot" style="width: 600px;background-color: #f8f8f8">
+        <div align="center">
+          <div class="subs">
+            <p style="font-size: 10px;padding-top: 30px;color: #696868">Experience the convenience of advertising with 2Dots Properties.</p>
+          </div>
+          <div>
+            <img src="https://2dots.ams3.digitaloceanspaces.com/app_store.png" class="logo-img" style="padding-right: 10px;padding-top: 10px; width: 100px;""/>
+         <img src="https://2dots.ams3.digitaloceanspaces.com/google_store.png" class="logo-img" style="padding-left: 10px;padding-top: 10px; width: 100px;""/>
+    </div>
+          <div class="subs">
+            <p style="font-size: 10px;padding-top: 30px;color: #696868">If you need help <a href="https://2dotsproperties.com/faqs" style="text-decoration: none;color: #0CB8E0">visit our FAQs.</a></p>
+          </div>
+          <div>
+          <a href="https://www.instagram.com/2dotsproperties_ng/">
+            <img src="https://2dots.ams3.digitaloceanspaces.com/mail-instagram.png" class="logo-img" style="padding-right: 10px;padding-top: 10px"/>
+          </a>
+          <a href="https://twitter.com/2dotsproperties">
+            <img src="https://2dots.ams3.digitaloceanspaces.com/mail-twitter.png" class="logo-img" style="padding-top: 10px"/>
+          </a>
+          <a href="https://www.facebook.com/2dotsproperties">
+            <img src="https://2dots.ams3.digitaloceanspaces.com/mail-facebook.png" class="logo-img" style="padding-left: 10px;padding-top: 10px"/>
+          </a>
+    </div>
+          <div class="subs">
+            <p style="padding-bottom: 0;font-size: 10px;padding-top: 30px;color: #696868">You are receiving this email because have an account at 2Dots Properties</p>
+          </div>
+          <div class="subs">
+            <p class="vist" style="padding-bottom: 23px;padding-top: 0;font-size: 10px;color: #696868"> Visit us at <a href="https://2dotsproperties.com/terms-and-conditions" style="text-decoration: none;color: #0CB8E0">www.2dotproperties.com</a> to view our Terms & Conditions or our <a href="https://2dotsproperties.com/privacy-policy" style="text-decoration: none;color: #0CB8E0">Privacy Policy.</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

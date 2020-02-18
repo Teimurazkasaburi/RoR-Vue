@@ -1,0 +1,31 @@
+p = @posts.reject { |p| p.images.attached? == false }.map do |post|
+  i = if post.images.first.variable?
+        url_for(post.images.first.variant(combine_options: Post.medium_options))
+  elsif post.images.last.variable?
+        url_for(post.images.last.variant(combine_options: Post.medium_options))
+  else
+      '/img/fallback.jpg'
+      post.markers.create!(type_of_maker: "REPORTED", saved: true, user_id: 2, post_id: post.id) if !post.markers.where(user_id: 2).exists?
+  end
+  
+  {
+    location: "#{post.lga}, #{post.state}",
+    title: post.title,
+    price: post.price,
+    boost: post.boost,
+    priority: post.priority,
+    permalink: post.permalink,
+    card_thumbnail: i
+  }
+end
+
+{
+  links: {
+    current_page:  @posts.current_page,
+    per_page: @posts.per_page,
+    total_entries: @posts.total_entries,
+    next_page: "/?page=#{@posts.next_page}",
+    previous_page: "/?page=#{@posts.previous_page}",
+  },
+  posts: p
+}

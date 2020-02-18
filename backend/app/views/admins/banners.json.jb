@@ -1,0 +1,32 @@
+b = @banner_ads.map do | banner |
+  i = if banner.banner_type == "SMALL"
+        url_for(banner.sidebar_image.variant(combine_options: BannerAd.banner_ad))
+      elsif banner.banner_type == "MEDIUM"
+        url_for(banner.listing_mobile_image.variant(combine_options: BannerAd.banner_ad))
+      elsif banner.banner_type == "LARGE"
+        url_for(banner.home_mobile_image.variant(combine_options: BannerAd.banner_ad))
+    end
+
+  {
+    status: banner.status,
+    duration: banner.duration,
+    expiring_date: banner.expiring_date.strftime("%e %b. %y"),
+    created_at: banner.created_at.strftime( "%e %b. %y"),
+    url: banner.url,
+    permalink: "banner_ads/#{banner.ref_no}",
+    ref_no: banner.ref_no,
+    banner_type: banner.banner_type,
+    image: i
+  }
+end
+
+{
+  links: {
+      current_page:  @banner_ads.current_page,
+      per_page: @banner_ads.per_page,
+      total_entries: @banner_ads.total_entries,
+      next_page: "/?page=#{@banner_ads.next_page}",
+      previous_page: "/?page=#{@banner_ads.previous_page}",
+  },
+  banners: b
+}

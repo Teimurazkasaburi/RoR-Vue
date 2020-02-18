@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  saved: false
+  user_id: 1
+  post_id: 1
+  type_of_maker: MyString
+
+two:
+  saved: false
+  user_id: 1
+  post_id: 1
+  type_of_maker: MyString

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ref_no: MyString
+  status: MyString
+  expiring_date: 2019-06-22 11:56:11
+  url: MyString
+  type: 
+  duration: 1
+
+two:
+  ref_no: MyString
+  status: MyString
+  expiring_date: 2019-06-22 11:56:11
+  url: MyString
+  type: 
+  duration: 1

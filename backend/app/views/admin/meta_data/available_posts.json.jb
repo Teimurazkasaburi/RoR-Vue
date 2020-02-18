@@ -1,0 +1,31 @@
+p = @posts.map do |post|
+  reported = if post.markers.where(type_of_maker: "REPORTED" ).present?
+        true
+      else
+        false
+      end
+  {
+    id: post.id,
+    title: post.title,
+    locality: post.lga,
+    state: post.state,
+    permalink: post.permalink,
+    type_of_property: post.type_of_property,
+    description: post.description.truncate(155, separator: ' '),
+    status: reported,
+    images: post.images.reject { |i| i.variable? == false } .map do |image|
+      post_image_url(post, image)
+    end
+  }
+end
+
+{
+  links: {
+    current_page:  @posts.current_page,
+    per_page: @posts.per_page,
+    total_entries: @posts.total_entries,
+    next_page: "/?page=#{@posts.next_page}",
+    previous_page: "/?page=#{@posts.previous_page}",
+  },
+  posts: p
+}

@@ -1,0 +1,23 @@
+a = @users.map do |user|
+  l = user.last_logged_in.strftime("%e %b. %y. - %l:%M %P") if user.last_logged_in
+  {
+    name: "#{user.f_name} #{user.l_name}",
+    account_type: user.account_type,
+    permalink: user.username,
+    no_of_propertie:  user.posts_count,
+    last_logged_in: l,
+    verified: user.verified,
+    is_super: user.super_user
+  }
+end
+
+{
+  links: {
+    current_page:  @users.current_page,
+    per_page: @users.per_page,
+    total_entries: @users.total_entries,
+    next_page: "/?page=#{@users.next_page}",
+    previous_page: "/?page=#{@users.previous_page}",
+  },
+  users: a
+}

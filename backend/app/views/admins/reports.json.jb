@@ -1,0 +1,19 @@
+r = @reports.map do |report|
+  {
+    reported_date: report.created_at.strftime( "%e %b. %y"),
+    title: report.post.title,
+    state: report.post.state,
+    permalink: report.post.permalink,
+  }
+end
+
+{
+  links: {
+    current_page:  @reports.current_page,
+    per_page: @reports.per_page,
+    total_entries: @reports.total_entries,
+    next_page: "/?page=#{@reports.next_page}",
+    previous_page: "/?page=#{@reports.previous_page}",
+  },
+  reports: r
+}

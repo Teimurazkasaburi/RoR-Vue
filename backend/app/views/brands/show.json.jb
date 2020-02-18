@@ -1,0 +1,13 @@
+json = {
+  status: @brand.status,
+  duration: @brand.duration,
+  expiring_date: @brand.expiring_date.strftime( "%e %b. %y"),
+  created_at: @brand.created_at.strftime( "%e %b. %y"),
+  url: @brand.url,
+  permalink: "brands/#{@brand.ref_no}",
+  ref_no: @brand.ref_no,
+  amount: @brand.amount,
+  email: @brand.user.email,
+  first_name: @brand.user.f_name,
+  last_name: @brand.user.l_name
+}

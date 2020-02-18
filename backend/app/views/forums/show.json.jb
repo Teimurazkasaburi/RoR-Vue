@@ -1,0 +1,60 @@
+i = if (@forum.user.avatar.attached? == true) && (@forum.user.avatar.variable? == true)
+        url_for(@forum.user.avatar.variant(combine_options: User.avatar))
+      else
+        nil
+      end
+
+c = if @current_user
+      if @forum.user == @current_user || @current_user.admin 
+          true
+        else
+          false
+      end
+    else
+      false
+    end
+
+
+json =  {
+    subject: @forum.subject,
+    body: @forum.body,
+    replies: @forum.comments_count,
+    posted_at: @forum.created_at.strftime( "%e %b. %y"),
+    category: @forum.category,
+    permalink: @forum.permalink,
+    user: "#{@forum.user.f_name} #{@forum.user.l_name}",
+    link_to_user: "/agents/#{@forum.user.username}",
+    can_delete: c,
+    avatar: i
+}
+
+
+json[:comments] = @forum.comments.map do |comment|
+  a = if comment.user.avatar.attached? && comment.user.avatar.variable?
+        url_for(comment.user.avatar.variant(combine_options: User.avatar))
+      else
+        nil
+      end
+
+  c = if @current_user
+      if comment.user == @current_user || @current_user.admin 
+          true
+        else
+          false
+      end
+    else
+      false
+    end
+
+  {
+    body: comment.body,
+    permalink: "forums/#{@forum.permalink}/comments/#{comment.id}",
+    user: "#{comment.user.f_name} #{comment.user.l_name}",
+    link_to_user: "/agents/#{comment.user.username}",
+    posted_at: comment.created_at.strftime( "%e %b. %y"),
+    can_delete: c,
+    avatar: a
+  }
+end
+
+json

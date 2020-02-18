@@ -1,0 +1,61 @@
+version: '3.5'
+services:
+
+  database:
+    image: postgres:10.5
+    environment:
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: tds-backend_development
+    volumes:
+      - /mnt/tds/db/postgres:/var/lib/postgresql/data
+    ports:
+      - 54321:5432
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./ci/backend.Dockerfile
+    command: ['/bin/sh', '-c', 'bundle ; rm -f tmp/pids/server.pid ; rails s']
+    volumes:
+      - ./backend:/usr/src/tds
+    depends_on:
+      - database
+    ports:
+      - 3000:3000
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./ci/frontend.Dockerfile
+    command: ['/bin/sh', '-c', 'yarn install ; yarn build ; yarn start']
+    environment:
+      API_URL: http://localhost:3000/
+      HOST: 0.0.0.0
+    volumes:
+      - ./frontend:/home/node/tds
+    ports:
+      - 3500:3500
+
+  # NOTE: If the elasticsearch fails - RUN THIS:
+  # sudo sysctl -w vm.max_map_count=524288
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.3
+    container_name: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+
+volumes:
+  esdata1:

@@ -1,0 +1,18 @@
+json = {
+    name: "#{@verify_user.user.f_name} #{@verify_user.user.l_name}",
+    email: @verify_user.user.email,
+    username: @verify_user.user.username,
+    permalink: "/verify_users/#{@verify_user.id}",
+    phone:  @verify_user.user.phone,
+    created_at: @verify_user.created_at.strftime("%e %b. %y. - %l:%M %P")
+  }
+
+if @verify_user.cac.attached?
+  json[:cac_doc] = url_for(@verify_user.cac.variant(combine_options: Post.large_options))
+end
+
+if @verify_user.bill.attached?
+  json[:bill_doc] = url_for(@verify_user.bill.variant(combine_options: Post.large_options))
+end
+
+json

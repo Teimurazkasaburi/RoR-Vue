@@ -1,0 +1,22 @@
+f = @contacts.map do |contact|
+  {
+    name: contact.name,
+    email: contact.email,
+    phone: contact.phone,
+    created_at: contact.created_at.strftime( "%e %b. %y"),
+    body: contact.body,
+    delete_url: "contacts/#{contact.id}"
+  }
+end
+
+
+{
+  links: {
+      current_page:  @contacts.current_page,
+      per_page: @contacts.per_page,
+      total_entries: @contacts.total_entries,
+      next_page: "/?page=#{@contacts.next_page}",
+      previous_page: "/?page=#{@contacts.previous_page}",
+  },
+  form_posts: f
+}

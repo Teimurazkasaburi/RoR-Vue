@@ -1,0 +1,7 @@
+json = {
+  name:"#{@admin.f_name}  #{@admin.l_name}",
+  logged_at: @admin.logged_in_at.strftime("%e %b. %y. - %l:%M %P"),
+  last_logged_in: @admin.last_logged_in.strftime("%e %b. %y. - %l:%M %P"),
+  email: @admin.email,
+  super_user: @admin.super_user
+}

@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time: 2019-07-19 12:41:00
+
+two:
+  time: 2019-07-19 12:41:00

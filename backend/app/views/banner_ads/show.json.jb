@@ -1,0 +1,14 @@
+json = {
+  status: @banner_ad.status,
+  duration: @banner_ad.duration,
+  expiring_date: @banner_ad.expiring_date.strftime( "%e %b. %y"),
+  created_at: @banner_ad.created_at.strftime( "%e %b. %y"),
+  url: @banner_ad.url,
+  permalink: "banner_ads/#{@banner_ad.ref_no}",
+  ref_no: @banner_ad.ref_no,
+  banner_type: @banner_ad.banner_type,
+  amount: @banner_ad.amount,
+  email: @banner_ad.user.email,
+  first_name: @banner_ad.user.f_name,
+  last_name: @banner_ad.user.l_name
+}

@@ -1,0 +1,6 @@
+@brands.map do |brand|
+  {
+    url: brand.url,
+    logo: url_for(brand.logo.variant(combine_options: BannerAd.banner_ad))
+  }
+end

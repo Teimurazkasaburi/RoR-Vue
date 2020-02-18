@@ -1,0 +1,25 @@
+a = @agents.map do |agent|
+  i = if agent.avatar.attached? == true
+        url_for(agent.avatar.variant(combine_options: User.avatar))
+      else
+        nil
+      end
+
+  {
+    company: agent.company,
+    permalink: agent.username,
+    avatar:  i,
+    verified: agent.verified
+  }
+end
+
+{
+  links: {
+    current_page:  @agents.current_page,
+    per_page: @agents.per_page,
+    total_entries: @agents.total_entries,
+    next_page: "/?page=#{@agents.next_page}",
+    previous_page: "/?page=#{@agents.previous_page}",
+  },
+  agents: a
+}

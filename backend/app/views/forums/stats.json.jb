@@ -1,0 +1,9 @@
+{
+  design: @design,
+  construction: @construction,
+  sales: @sales,
+  legal: @legal,
+  investments: @investments,
+  agents: @agents,
+  questions: @questions
+}

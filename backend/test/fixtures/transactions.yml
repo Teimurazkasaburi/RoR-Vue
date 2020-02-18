@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ref_no: MyString
+  amount: 1
+  transaction_for: MyString
+  user_id: 1
+  duration: 1
+  status: MyString
+
+two:
+  ref_no: MyString
+  amount: 1
+  transaction_for: MyString
+  user_id: 1
+  duration: 1
+  status: MyString

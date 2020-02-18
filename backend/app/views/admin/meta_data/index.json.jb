@@ -1,0 +1,14 @@
+p = @meta_data.map do |meta|
+  meta.attributes.merge(post_title: meta.post&.title, post_permalink: meta.post&.permalink)
+end
+
+{
+  links: {
+    current_page:  @meta_data.current_page,
+    per_page: @meta_data.per_page,
+    total_entries: @meta_data.total_entries,
+    next_page: "/?page=#{@meta_data.next_page}",
+    previous_page: "/?page=#{@meta_data.previous_page}",
+  },
+  meta_data: p
+}

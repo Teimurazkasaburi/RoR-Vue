@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  purpose: MyString
+  budget: 1
+  type_of_property: MyString
+  state: MyString
+  lga: MyString
+  area: MyString
+  description: MyText
+  user_id: 1
+
+two:
+  purpose: MyString
+  budget: 1
+  type_of_property: MyString
+  state: MyString
+  lga: MyString
+  area: MyString
+  description: MyText
+  user_id: 1
