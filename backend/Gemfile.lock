@@ -109,7 +109,7 @@ GEM
       faraday
       multi_json
     erubi (1.8.0)
-    excon (0.67.0)
+    excon (0.72.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.10.0)
